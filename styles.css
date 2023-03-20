@@ -113,3 +113,117 @@
     right:0;
 }
 
+/* New card component */
+
+.new-card-container {
+  display: grid;
+  place-items: center;
+}
+.new-card {
+  width: 343px;
+  height: 147px;
+  position: relative;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+}
+.new-card-front,
+.new-card-back {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  background-color: white;
+  filter: drop-shadow(0px 20px 34px rgba(152, 163, 207, 0.3));
+}
+.new-card-front {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+input {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: #98a3cf solid 1px;
+  width: 90%;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  font-family: "Raleway";
+}
+.first-input {
+  margin-top: 60px;
+}
+
+.second-input {
+  margin-top: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.new-card-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.btn {
+  font-family: "Raleway";
+  font-weight: 600;
+  font-size: 14px;
+  width: 110px;
+  height: 34px;
+  background-color: white;
+  border: solid 1px #98a3cf;
+  border-radius: 30px;
+  margin: 16px;
+}
+
+.cancel-btn,
+.back-btn {
+  color: #98a3cf;
+}
+
+.next-btn,
+.save-btn {
+  color: white;
+  background-color: #98a3cf;
+}
+
+.new-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.firstInputValue {
+  font-family: "Raleway";
+  font-weight: 500;
+  font-size: 12px;
+  margin: 16px;
+  color: #98a3cf;
+}
+
+.hidden {
+  display: none;
+}
