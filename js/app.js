@@ -76,16 +76,6 @@ saveBtn.addEventListener("click", function () {
       </div>
       </div>
     </div>`;
-  //  `<div class="new-card-container">
-  //   <div class="new-card">
-  //     <div class="new-card-front">
-  //       ${inputValue1}
-  //     </div>
-  //     <div class="new-card-back">
-  //       ${inputValue2}
-  //     </div>
-  //   </div>
-  // </div>`;
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
@@ -95,5 +85,6 @@ saveBtn.addEventListener("click", function () {
   document.querySelector(".second-input").value = "";
 
   // Hide the new card container
+  cardFlip();
   document.querySelector(".new-card-container").classList.add("hidden");
 });
