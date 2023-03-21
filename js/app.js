@@ -62,28 +62,56 @@ nextBtn.addEventListener("click", function () {
 });
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
+  // header counter
+
   const counter = document.getElementById("counter");
   const inputValue1 = document.querySelector(".first-input").value;
   const inputValue2 = document.querySelector(".second-input").value;
   cardCounter++;
   counter.innerText = cardCounter;
+
+  // elements
   const newCard = document.createElement("li");
-  newCard.innerHTML = `<div class="card" id="card-front-read-only">
-      <div class="front" id="front-read-only">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">${inputValue1}</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>
-    <div class="card" id="card-back-read-only">
-      <div class="back" id="back-read-only">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">${inputValue2}</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>`;
+  const cardFrontReadOnly = document.createElement("div");
+  const frontReadOnly = document.createElement("div");
+  const textFrameFront = document.createElement("div");
+  const pFront = document.createElement("p");
+  const img = document.createElement("img");
+  const cardBackReadOnly = document.createElement("div");
+  const backReadOnly = document.createElement("div");
+  const textFrameBack = document.createElement("div");
+  const pBack = document.createElement("p");
+
+  // setting inputs and sources
+  pFront.textContent = inputValue1;
+  img.src = "Icon.svg";
+  img.alt = "editIcon";
+  pBack.textContent = inputValue2;
+
+  // adding classes
+  cardFrontReadOnly.className = "card";
+  frontReadOnly.className = "front";
+  textFrameFront.className = "textFrame";
+  pFront.className = "textstyle";
+  img.className = "editIcon";
+  cardBackReadOnly.className = "card";
+  backReadOnly.className = "back";
+  textFrameBack.className = "textFrame";
+  pBack.className = "textstyle";
+
+  // adding to DOM
+  textFrameFront.appendChild(pFront);
+  textFrameFront.appendChild(img);
+  frontReadOnly.appendChild(textFrameFront);
+  cardFrontReadOnly.appendChild(frontReadOnly);
+
+  textFrameBack.appendChild(pBack);
+  textFrameBack.appendChild(img);
+  backReadOnly.appendChild(textFrameBack);
+  cardBackReadOnly.appendChild(backReadOnly);
+
+  newCard.appendChild(cardFrontReadOnly);
+  newCard.appendChild(cardBackReadOnly);
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
