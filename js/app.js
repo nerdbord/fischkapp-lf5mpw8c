@@ -30,6 +30,7 @@ const cancelBtn = document.querySelector(".cancel-btn");
 const nextBtn = document.querySelector(".next-btn");
 const backBtn = document.querySelector(".back-btn");
 const saveBtn = document.querySelector(".save-btn");
+let cardCounter = 0;
 
 addNewBtn.addEventListener("click", () => {
   newCardContainer.classList.remove("hidden");
@@ -61,9 +62,11 @@ nextBtn.addEventListener("click", function () {
 });
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
+  const counter = document.getElementById("counter");
   const inputValue1 = document.querySelector(".first-input").value;
   const inputValue2 = document.querySelector(".second-input").value;
-
+  cardCounter++;
+  counter.innerText = cardCounter;
   const newCard = document.createElement("li");
   newCard.innerHTML = `<div class="card" id="card-front-read-only">
       <div class="front" id="front-read-only">
