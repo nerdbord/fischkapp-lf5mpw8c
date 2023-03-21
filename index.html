@@ -9,104 +9,82 @@
   </head>
   <body>
     <div id="app">
-    <!-- task 1: header -->
-        <header id="app-header">
-          <div class="header-title">
+      <!-- task 1: header -->
+      <header id="app-header">
+        <div class="header-title">
           <p class="header-title-p">FISCHKAPP</p>
           <p class="header-title-counter" id="counter">4</p>
-          </div>
-          <button class="addNew">
-          <img src="addNewCard.svg" alt="addNewCard">
-          </button>
-          </header>
-          <div class="card-container">
-
-    <!-- new card component -->
-      <div class="new-card-container hidden">
-        <div class="new-card">
-          <div class="new-card-front">
-            <input type="text" class="first-input" placeholder="First Card" />
-            <div class="new-card-buttons">
-              <button class="cancel-btn btn">Cancel</button>
-              <button class="next-btn btn">Next</button>
+        </div>
+        <button class="addNew">
+          <img src="addNewCard.svg" alt="addNewCard" />
+        </button>
+      </header>
+      <div class="card-container">
+        <!-- new card component -->
+        <div class="new-card-container hidden">
+          <div class="new-card">
+            <div class="new-card-front">
+              <input type="text" class="first-input" placeholder="First Card" />
+              <div class="new-card-buttons">
+                <button class="cancel-btn btn">Cancel</button>
+                <button class="next-btn btn">Next</button>
+              </div>
             </div>
-          </div>
-          <div class="new-card-back">
-            <div class="top-section">
-              <p class="firstInputValue">la botella</p>
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M27 14H13" stroke="#98A3CF" stroke-linecap="round" />
-                <path d="M22 13H18" stroke="#98A3CF" stroke-linecap="round" />
-                <path
-                  d="M14 18V29H26C26 28 26 18 26 18"
-                  stroke="#98A3CF"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
-            <input type="text" class="second-input" placeholder="Second Card" />
-            <div class="buttons">
-              <button class="back-btn btn">Back</button>
-              <button class="save-btn btn">Save</button>
+            <div class="new-card-back">
+              <div class="top-section">
+                <p class="firstInputValue">la botella</p>
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M27 14H13" stroke="#98A3CF" stroke-linecap="round" />
+                  <path d="M22 13H18" stroke="#98A3CF" stroke-linecap="round" />
+                  <path
+                    d="M14 18V29H26C26 28 26 18 26 18"
+                    stroke="#98A3CF"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                class="second-input"
+                placeholder="Second Card"
+              />
+              <div class="buttons">
+                <button class="back-btn btn">Back</button>
+                <button class="save-btn btn">Save</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-<!-- task 3: flashcard list -->
-  <ul id="card-list">
-    <div class="card hidden" id="card">
-      <div class="front">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">la bottiglia</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>
-
-    <div class="card hidden" id="card">
-      <div class="front">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">rodzina to najważniejsza rzecz na świecie</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>
-
-    <div class="card hidden" id="card">
-      <div class="front">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">l’amore</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>
-
-    <div class="card hidden" id="card">
-      <div class="front">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">zakupy</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div>
-  <!-- task 4: card component -->
-  <!-- front side -->
-    <div class="card" id="card-front-read-only">
+        <!-- task 3: flashcard list -->
+        <ul id="card-list">
+          <!-- <li>
+      <div class="card" id="card">
+        <div class="front">
+          <div class="textFrame" id="textFrame">
+          <p class="textstyle">la bottiglia</p>  
+          <img src="Icon.svg" alt="editIcon">
+          </div>
+        </div>
+      </div>          
+    </li> -->
+          <!-- task 4: card component -->
+          <!-- front side -->
+          <!-- <div class="card" id="card-front-read-only">
       <div class="front" id="front-read-only">
       <div class="textFrame" id="textFrame">
       <p class="textstyle">la bottiglia</p>  
       <img src="Icon.svg" alt="editIcon">
       </div>
       </div>
-    </div>
-    <div class="card" id="card-front-editable">
+    </div> -->
+          <!-- <div class="card" id="card-front-editable">
       <div class="front" id="front-editable">
       <input type="text" class="textstyleedit" placeholder="la bottiglia">
       <img src="Icon(1).svg" alt="editbutton">
@@ -115,17 +93,17 @@
       <button class="save-btn btn">Save</button>
       </div>
       </div>
-    </div>
-  <!-- back-side -->
-    <div class="card" id="card-back-read-only">
+    </div> -->
+          <!-- back-side -->
+          <!-- <div class="card" id="card-back-read-only">
       <div class="back" id="back-read-only">
       <div class="textFrame" id="textFrame">
       <p class="textstyle">la bottiglia</p>  
       <img src="Icon.svg" alt="editIcon">
       </div>
       </div>
-    </div>
-    <div class="card" id="card-back-editable">
+    </div> -->
+          <!-- <div class="card" id="card-back-editable">
       <div class="back" id="back-editable">
       <input type="text" class="textstyleedit" placeholder="la bottiglia">
       <img src="Icon(1).svg" alt="editbutton">
@@ -134,12 +112,12 @@
       <button class="save-btn btn">Save</button>
       </div>
       </div>
+    </div> -->
+          <!-- the end of task 4: card component -->
+          <!-- </div> -->
+        </ul>
+      </div>
     </div>
-<!-- the end of task 4: card component -->
-</div>
-</ul>
-</div>
-
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>
