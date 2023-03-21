@@ -56,9 +56,9 @@ cancelBtn.addEventListener("click", function () {
 });
 nextBtn.addEventListener("click", function () {
   const inputValue1 = document.querySelector(".first-input").value;
-  const firstInputOnSecongPage = document.querySelector(".firstInputValue");
+  const firstInputOnSecondPage = document.querySelector(".firstInputValue");
   cardFlip();
-  firstInputOnSecongPage.innerHTML = inputValue1;
+  firstInputOnSecondPage.innerHTML = inputValue1;
 });
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
