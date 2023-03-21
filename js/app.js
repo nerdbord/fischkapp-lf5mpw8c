@@ -53,7 +53,12 @@ const cardFlip = () => {
 cancelBtn.addEventListener("click", function () {
   newCardContainer.classList.add("hidden");
 });
-nextBtn.addEventListener("click", cardFlip);
+nextBtn.addEventListener("click", function () {
+  const inputValue1 = document.querySelector(".first-input").value;
+  const firstInputOnSecongPage = document.querySelector(".firstInputValue");
+  cardFlip();
+  firstInputOnSecongPage.innerHTML = inputValue1;
+});
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
   const inputValue1 = document.querySelector(".first-input").value;
