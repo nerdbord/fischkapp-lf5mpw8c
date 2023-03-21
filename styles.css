@@ -13,7 +13,7 @@
   
   #app {
     max-width: 375px;
-    height: 755px;
+    min-height: 755px;
     margin: 1% auto;
     background: #fff;
   }
@@ -172,6 +172,10 @@ input {
 
 input:focus {
     outline: none;
+}
+
+#card-list{
+  list-style-type: none;
 }
 
 /* New card component */
