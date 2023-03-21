@@ -63,55 +63,22 @@ nextBtn.addEventListener("click", function () {
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
   // header counter
-
   const counter = document.getElementById("counter");
-  const inputValue1 = document.querySelector(".first-input").value;
-  const inputValue2 = document.querySelector(".second-input").value;
   cardCounter++;
   counter.innerText = cardCounter;
 
-  // elements
-  const newCard = document.createElement("li");
-  const cardFrontReadOnly = document.createElement("div");
-  const frontReadOnly = document.createElement("div");
-  const textFrameFront = document.createElement("div");
-  const pFront = document.createElement("p");
-  const img = document.createElement("img");
-  const cardBackReadOnly = document.createElement("div");
-  const backReadOnly = document.createElement("div");
-  const textFrameBack = document.createElement("div");
-  const pBack = document.createElement("p");
+  // inputs outputs
+  const inputValue1 = document.querySelector(".first-input").value;
+  const inputValue2 = document.querySelector(".second-input").value;
 
-  // setting inputs and sources
-  pFront.textContent = inputValue1;
-  img.src = "Icon.svg";
-  img.alt = "editIcon";
-  pBack.textContent = inputValue2;
+  const cardTemplate = document.getElementById("card-template");
+  const newCard = cardTemplate.cloneNode(true);
+  newCard.classList.remove("hidden");
 
-  // adding classes
-  cardFrontReadOnly.className = "card";
-  frontReadOnly.className = "front";
-  textFrameFront.className = "textFrame";
-  pFront.className = "textstyle";
-  img.className = "editIcon";
-  cardBackReadOnly.className = "card";
-  backReadOnly.className = "back";
-  textFrameBack.className = "textFrame";
-  pBack.className = "textstyle";
-
-  // adding to DOM
-  textFrameFront.appendChild(pFront);
-  textFrameFront.appendChild(img);
-  frontReadOnly.appendChild(textFrameFront);
-  cardFrontReadOnly.appendChild(frontReadOnly);
-
-  textFrameBack.appendChild(pBack);
-  textFrameBack.appendChild(img);
-  backReadOnly.appendChild(textFrameBack);
-  cardBackReadOnly.appendChild(backReadOnly);
-
-  newCard.appendChild(cardFrontReadOnly);
-  newCard.appendChild(cardBackReadOnly);
+  const cardFrontText = newCard.querySelector(".front-output");
+  cardFrontText.textContent = inputValue1;
+  const cardBackText = newCard.querySelector(".back-output");
+  cardBackText.textContent = inputValue2;
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
