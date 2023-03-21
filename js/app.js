@@ -58,7 +58,7 @@ nextBtn.addEventListener("click", function () {
   const inputValue1 = document.querySelector(".first-input").value;
   const firstInputOnSecondPage = document.querySelector(".firstInputValue");
   cardFlip();
-  firstInputOnSecondPage.innerHTML = inputValue1;
+  firstInputOnSecondPage.innerText = inputValue1;
 });
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
