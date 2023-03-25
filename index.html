@@ -51,22 +51,22 @@
       </div>
       <!-- task 3: card list -->
       <ul id="card-list">
-        <li id="card-template" class="hidden">
+        <li id="template-card" class="new-card hidden">
           <!-- front side -->
-          <div class="card" id="card-front-read-only">
-            <div class="front" id="front-read-only">
-              <div class="textFrame" id="textFrame">
+          <div class="new-card-front">
+            <div class="front">
+              <div class="textFrame">
                 <p class="textstyle front-output">la bottiglia</p>
-                <img src="Icon.svg" alt="editIcon">
+                <img id="editFront" src="Icon.svg" alt="editIcon">
               </div>
             </div>
           </div>
           <!-- back-side -->
-          <div class="card" id="card-back-read-only">
-            <div class="back" id="back-read-only">
-              <div class="textFrame" id="textFrame">
+          <div class="new-card-back">
+            <div class="back">
+              <div class="textFrame">
                 <p class="textstyle back-output">butelka</p>
-                <img src="Icon.svg" alt="editIcon">
+                <img id="editBack" src="Icon.svg" alt="editIcon">
               </div>
             </div>
           </div>
@@ -82,16 +82,15 @@
       </div>
       </div>
     </div> -->
-      <!-- <div class="card" id="card-front-editable">
-      <div class="front" id="front-editable">
-      <input type="text" class="textstyleedit" placeholder="la bottiglia">
+      
+      <div class="hidden" id="edit-template">
+      <input type="text" class="textstyleedit" placeholder="stara wartosc inputu">
       <img src="Icon(1).svg" alt="editbutton">
       <div class="buttons">
       <button class="cancel-btn btn">Cancel</button>
       <button class="save-btn btn">Save</button>
       </div>
       </div>
-    </div> -->
       <!-- back-side -->
       <!-- <div class="card" id="card-back-read-only">
       <div class="back" id="back-read-only">

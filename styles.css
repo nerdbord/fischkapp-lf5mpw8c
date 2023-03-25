@@ -1,180 +1,181 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: #373737;
-    font-family: 'Raleway';
-  }
-  
-  #app {
-    max-width: 375px;
-    min-height: 755px;
-    margin: 1% auto;
-    background: #fff;
-  }
-    
-  #app-header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 0px 34px rgba(152, 163, 207, 0.2);
-  }
-  
-  .header-title {
-    width: 139px;
-    height: 25px;
-    margin-top: 17px; 
-    margin-bottom: 20px;
-    margin-left: 16px;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .header-title-p {
-    width: 87%;
-    height: 23px;
-    float: left;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-  
-  .header-title-counter {
-    width: 9.6%;
-    margin-left: 5px;
-    float: left;
-    font-size: 21px;
-    font-weight: 600;
-    line-height: 25px;
-    letter-spacing: -1px;
-    text-align: center;
-    color: rgba(152, 163, 207, 1);
-  }
-
-  .addNew {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 10.5px 12px 9.5px 160px;
-  }
-
-  .card-container {
-    display: grid;
-    place-items: center;
-  }
-  .card {
-    width: 343px;
-    height: 147px;
-    display: flex;
-    border-radius: 16px;
-    transform-style: preserve-3d;
-    margin: 10px 16px 10px 16px;
-  }
-  .front,
-  .back {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    backface-visibility: hidden;
-    background-color: white;
-    filter: drop-shadow(0px 20px 34px rgba(152, 163, 207, 0.3));
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-.textFrame {
-    display: flex;
-    width: 322px;
-    height: 124px;
-    margin: 11px 11px 12px 10px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}    
- 
-.textstyle {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
-    padding: auto;
-    color: #1C1C1C;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.front img, .back img {
-    position: absolute;
-    top:0;
-    right:0;
-    cursor: pointer;
+body {
+  background: #373737;
+  font-family: "Raleway";
+}
+
+#app {
+  max-width: 375px;
+  min-height: 755px;
+  margin: 1% auto;
+  background: #fff;
+}
+
+#app-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 0px 34px rgba(152, 163, 207, 0.2);
+}
+
+.header-title {
+  width: 139px;
+  height: 25px;
+  margin-top: 17px;
+  margin-bottom: 20px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header-title-p {
+  width: 87%;
+  height: 23px;
+  float: left;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.header-title-counter {
+  width: 9.6%;
+  margin-left: 5px;
+  float: left;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: rgba(152, 163, 207, 1);
+}
+
+.addNew {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10.5px 12px 9.5px 160px;
+}
+
+.card-container {
+  display: grid;
+  place-items: center;
+}
+.card {
+  width: 343px;
+  height: 147px;
+  display: flex;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  margin: 10px 16px 10px 16px;
+}
+.front,
+.back {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  background-color: white;
+  filter: drop-shadow(0px 20px 34px rgba(152, 163, 207, 0.3));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.textFrame {
+  display: flex;
+  width: 322px;
+  height: 124px;
+  margin: 11px 11px 12px 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.textstyle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  padding: auto;
+  color: #1c1c1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.front img,
+.back img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 
 .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
 }
 
 .btn {
-    font-weight: 600;
-    font-size: 14px;
-    width: 110px;
-    height: 34px;
-    background-color: white;
-    border: solid 1px #98a3cf;
-    border-radius: 30px;
-    margin: 16px;
-    cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  width: 110px;
+  height: 34px;
+  background-color: white;
+  border: solid 1px #98a3cf;
+  border-radius: 30px;
+  margin: 16px;
+  cursor: pointer;
 }
 .cancel-btn {
-    color: #98a3cf;
+  color: #98a3cf;
 }
 
 .save-btn {
-    color: white;
-    background-color: #98a3cf;
+  color: white;
+  background-color: #98a3cf;
 }
 
 input {
-    font-family: "Raleway";
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: #98a3cf solid 1px;
-    width: 90%;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    line-height: 19px;
-    padding: auto;
-    color: #1C1C1C;
-    margin-top: 60px;
+  font-family: "Raleway";
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: #98a3cf solid 1px;
+  width: 90%;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  line-height: 19px;
+  padding: auto;
+  color: #1c1c1c;
+  margin-top: 60px;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
-#card-list{
+#card-list {
   list-style-type: none;
 }
 
@@ -190,6 +191,7 @@ input:focus {
   position: relative;
   border-radius: 10px;
   transform-style: preserve-3d;
+  margin: 10px 0;
 }
 .new-card-front,
 .new-card-back {
