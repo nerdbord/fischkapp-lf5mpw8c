@@ -1,27 +1,3 @@
-// import { createState } from "./data/createState.js";
-// import { createCardComponent } from "./ui/card.js";
-// import { addCard } from "./data/actions.js";
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Example of how we can create app state responsible for holding data
-//   let appState = createState();
-
-//   // Example of how we can create UI component using reusable function
-//   // const newCardData = { front: "Good morning", back: "Dzień dobry" };
-//   // const card = createCardComponent(newCardData);
-
-//   // Example of how we can add card to our state
-//   const updatedAppState = addCard(appState, newCardData);
-//   appState = updatedAppState;
-
-//   const app = document.getElementById("app");
-
-//   // Example of how to display created card in our UI
-//   app.append(card);
-
-//   console.log(`You have ${appState.flashcards.length} card/s.`);
-// });
-
 //new card component
 const addNewBtn = document.querySelector(".addNew");
 const newCardContainer = document.querySelector(".new-card-container");
@@ -31,6 +7,34 @@ const nextBtn = document.querySelector(".next-btn");
 const backBtn = document.querySelector(".back-btn");
 const saveBtn = document.querySelector(".save-btn");
 let cardCounter = 0;
+
+
+// display initial cards
+document.addEventListener("DOMContentLoaded", () => {
+  let appState = {
+    flashcards: [
+      { front: "Koń", back: "Horse" },
+      { front: "Królik", back: "Rabbit" },
+      { front: "Pies", back: "Dog" },
+    ],
+  };
+
+  const app = document.getElementById("app");
+  const cardTemplate = document.querySelector("#card-template");
+  const cardTemplateBack = document.getElementById("card-back-read-only");
+  cardTemplateBack.classList.add("hidden");
+  const cardList = document.querySelector("#card-list");
+
+  appState.flashcards.forEach((flashcard, index) => {
+    const cardToAdd = cardTemplate.cloneNode(true);
+    cardToAdd.classList.remove("hidden");
+    cardToAdd.id = "card_" + index;
+    const cardFront = cardToAdd.querySelector(".front-output");
+    cardFront.innerText = flashcard.front;
+    cardList.append(cardToAdd);
+  });
+  console.log(`you have ${appState.flashcards.length} card/s.`);
+});
 
 addNewBtn.addEventListener("click", () => {
   newCardContainer.classList.remove("hidden");
@@ -51,7 +55,8 @@ const cardFlip = () => {
     },
   });
 };
-cancelBtn.addEventListener("click", function () {
+
+  cancelBtn.addEventListener("click", function () {
   newCardContainer.classList.add("hidden");
 });
 nextBtn.addEventListener("click", function () {
@@ -67,11 +72,13 @@ saveBtn.addEventListener("click", function () {
   cardCounter++;
   counter.innerText = cardCounter;
 
-  // inputs outputs
+  // inputs outputs - display card with NewCard Component
   const inputValue1 = document.querySelector(".first-input").value;
   const inputValue2 = document.querySelector(".second-input").value;
 
   const cardTemplate = document.getElementById("card-template");
+  const cardTemplateBack = document.getElementById("card-back-read-only");
+  cardTemplateBack.classList.add("hidden");
   const newCard = cardTemplate.cloneNode(true);
   newCard.classList.remove("hidden");
 
@@ -79,6 +86,7 @@ saveBtn.addEventListener("click", function () {
   cardFrontText.textContent = inputValue1;
   const cardBackText = newCard.querySelector(".back-output");
   cardBackText.textContent = inputValue2;
+  cardBackText.classList.add("hidden");
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
@@ -91,3 +99,10 @@ saveBtn.addEventListener("click", function () {
   cardFlip();
   document.querySelector(".new-card-container").classList.add("hidden");
 });
+
+
+
+
+
+
+
