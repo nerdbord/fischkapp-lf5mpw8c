@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const app = document.getElementById("app");
   const cardTemplate = document.querySelector("#card-template");
-  cardTemplate.classList.remove("hidden");
   const cardTemplateBack = document.getElementById("card-back-read-only");
   cardTemplateBack.classList.add("hidden");
   const cardList = document.querySelector("#card-list");
 
   appState.flashcards.forEach((flashcard, index) => {
     const cardToAdd = cardTemplate.cloneNode(true);
+    cardToAdd.classList.remove("hidden");
     cardToAdd.id = "card_" + index;
     const cardFront = cardToAdd.querySelector(".front-output");
     cardFront.innerText = flashcard.front;
