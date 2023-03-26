@@ -6,6 +6,7 @@ const cancelBtn = document.querySelector(".cancel-btn");
 const nextBtn = document.querySelector(".next-btn");
 const backBtn = document.querySelector(".back-btn");
 const saveBtn = document.querySelector(".save-btn");
+const counter = document.getElementById("counter");
 let cards = [];
 let cardCounter = 0;
 
@@ -40,7 +41,6 @@ nextBtn.addEventListener("click", function () {
 backBtn.addEventListener("click", cardFlip);
 saveBtn.addEventListener("click", function () {
   // header counter
-  const counter = document.getElementById("counter");
   cardCounter++;
   counter.innerText = cardCounter;
 
@@ -70,14 +70,14 @@ saveBtn.addEventListener("click", function () {
   cardFlip();
   document.querySelector(".new-card-container").classList.add("hidden");
 
-  // access to all flashcards
+  // Access to all flashcards
   cards = document.querySelectorAll('li[id^="card"]');
 
-  //edit button
+  //Edit view
   cards.forEach((card) => {
     const buttonFront = card.querySelector("#editFront");
     const editTemplate = document.getElementById("edit-template");
-    buttonFront.addEventListener("click", (event) => {
+    buttonFront.addEventListener("click", () => {
       const newFront = editTemplate.cloneNode(true);
       const newFrontId = `editFront-${cardId}`;
       newFront.classList.remove("hidden");
@@ -92,6 +92,20 @@ saveBtn.addEventListener("click", function () {
       const cancelBtn = newFront.querySelector(".cancel-btn");
       cancelBtn.addEventListener("click", () => {
         newFront.replaceWith(previousViewFront);
+      });
+      //removing flashcard
+      const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
+      removeIcon.addEventListener("click", () => {
+        newFront.remove();
+        cardCounter--;
+        counter.innerText = cardCounter;
+      });
+      //saving new inputs
+      const saveBtn = newFront.querySelector(".save-btn");
+      saveBtn.addEventListener("click", () => {
+        const newInput = document.querySelector(".textstyleedit").value;
+        newFront.replaceWith(previousViewFront);
+        cardFrontText.textContent = newInput;
       });
     });
     const buttonBack = card.querySelector("#editBack");
@@ -110,6 +124,20 @@ saveBtn.addEventListener("click", function () {
       const cancelBtn = newBack.querySelector(".cancel-btn");
       cancelBtn.addEventListener("click", () => {
         newBack.replaceWith(previousViewBack);
+      });
+      //removing flashcard
+      const removeIcon = newBack.querySelector('img[src="removeIcon.svg"]');
+      removeIcon.addEventListener("click", () => {
+        newBack.remove();
+        cardCounter--;
+        counter.innerText = cardCounter;
+      });
+      //saving edited
+      const saveBtn = newBack.querySelector(".save-btn");
+      saveBtn.addEventListener("click", () => {
+        const newInput = document.querySelector(".textstyleedit").value;
+        newBack.replaceWith(previousViewBack);
+        cardBackText.textContent = newInput;
       });
     });
     card.addEventListener("click", (event) => {
