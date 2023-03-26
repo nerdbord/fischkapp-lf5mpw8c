@@ -1,4 +1,4 @@
-//new card component
+//variables
 const addNewBtn = document.querySelector(".addNew");
 const newCardContainer = document.querySelector(".new-card-container");
 const card = document.querySelector(".new-card");
@@ -9,13 +9,9 @@ const saveBtn = document.querySelector(".save-btn");
 const counter = document.getElementById("counter");
 let cards = [];
 let cardCounter = 0;
-
-addNewBtn.addEventListener("click", () => {
-  newCardContainer.classList.remove("hidden");
-});
-
 let playing = false;
 
+//functions
 const cardFlip = () => {
   if (playing) return;
   playing = true;
@@ -29,16 +25,26 @@ const cardFlip = () => {
     },
   });
 };
+
+//event listeners
+
+addNewBtn.addEventListener("click", () => {
+  newCardContainer.classList.remove("hidden");
+});
+
 cancelBtn.addEventListener("click", function () {
   newCardContainer.classList.add("hidden");
 });
+
 nextBtn.addEventListener("click", function () {
   const inputValue1 = document.querySelector(".first-input").value;
   const firstInputOnSecondPage = document.querySelector(".firstInputValue");
   cardFlip();
   firstInputOnSecondPage.innerText = inputValue1;
 });
+
 backBtn.addEventListener("click", cardFlip);
+
 saveBtn.addEventListener("click", function () {
   // header counter
   cardCounter++;
@@ -144,7 +150,7 @@ saveBtn.addEventListener("click", function () {
       if (event.target.classList.contains("textFrame")) {
         anime({
           targets: card,
-          rotateY: { value: "+=180", delay: 100 },
+          rotateY: { value: "+=180", delay: 200 },
           easing: "easeInOutSine",
           duration: 400,
           complete: function (anim) {
