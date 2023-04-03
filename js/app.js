@@ -99,13 +99,6 @@ saveBtn.addEventListener("click", function () {
       cancelBtn.addEventListener("click", () => {
         newFront.replaceWith(previousViewFront);
       });
-      //removing flashcard
-      const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
-      removeIcon.addEventListener("click", () => {
-        newFront.remove();
-        cardCounter--;
-        counter.innerText = cardCounter;
-      });
       //saving new inputs
       const saveBtn = newFront.querySelector(".save-btn");
       saveBtn.addEventListener("click", () => {
@@ -145,19 +138,6 @@ saveBtn.addEventListener("click", function () {
         newBack.replaceWith(previousViewBack);
         cardBackText.textContent = newInput;
       });
-    });
-    card.addEventListener("click", (event) => {
-      if (event.target.classList.contains("textFrame")) {
-        anime({
-          targets: card,
-          rotateY: { value: "+=180", delay: 200 },
-          easing: "easeInOutSine",
-          duration: 400,
-          complete: function (anim) {
-            playing = false;
-          },
-        });
-      }
     });
   });
 });
