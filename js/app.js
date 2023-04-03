@@ -3,6 +3,7 @@ const addNewBtn = document.querySelector(".addNew");
 const newCardContainer = document.querySelector(".new-card-container");
 const card = document.querySelector(".new-card");
 const cancelBtn = document.querySelector(".cancel-btn");
+const trashBtn = document.querySelector("#trashBtn");
 const nextBtn = document.querySelector(".next-btn");
 const backBtn = document.querySelector(".back-btn");
 const saveBtn = document.querySelector(".save-btn");
@@ -36,6 +37,13 @@ cancelBtn.addEventListener("click", function () {
   newCardContainer.classList.add("hidden");
 });
 
+trashBtn.addEventListener("click", () => {
+  cardFlip();
+  document.querySelector(".first-input").value = "";
+  document.querySelector(".second-input").value = "";
+  newCardContainer.classList.add("hidden");
+});
+
 nextBtn.addEventListener("click", function () {
   const inputValue1 = document.querySelector(".first-input").value;
   const firstInputOnSecondPage = document.querySelector(".firstInputValue");
@@ -58,7 +66,6 @@ saveBtn.addEventListener("click", function () {
   const newCard = cardTemplate.cloneNode(true);
   newCard.classList.remove("hidden");
   const cardId = `card-${cards.length + 1}`;
-  console.log(cards);
   newCard.id = cardId;
   const cardFrontText = newCard.querySelector(".front-output");
   cardFrontText.textContent = inputValue1;
@@ -99,6 +106,13 @@ saveBtn.addEventListener("click", function () {
       const cancelBtn = newFront.querySelector(".cancel-btn");
       cancelBtn.addEventListener("click", () => {
         newFront.replaceWith(previousViewFront);
+      });
+      //removing flashcard
+      const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
+      removeIcon.addEventListener("click", () => {
+        newFront.remove();
+        cardCounter--;
+        counter.innerText = cardCounter;
       });
       //saving new inputs
       const saveBtn = newFront.querySelector(".save-btn");
@@ -142,10 +156,3 @@ saveBtn.addEventListener("click", function () {
     });
   });
 });
-
-
-
-
-
-
-
