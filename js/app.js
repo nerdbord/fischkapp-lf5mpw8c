@@ -50,7 +50,7 @@ saveBtn.addEventListener("click", function () {
   cardCounter++;
   counter.innerText = cardCounter;
 
-  // inputs outputs
+  // inputs outputs - display card with NewCard Component
   const inputValue1 = document.querySelector(".first-input").value;
   const inputValue2 = document.querySelector(".second-input").value;
 
@@ -64,6 +64,7 @@ saveBtn.addEventListener("click", function () {
   cardFrontText.textContent = inputValue1;
   const cardBackText = newCard.querySelector(".back-output");
   cardBackText.textContent = inputValue2;
+  cardBackText.classList.add("hidden");
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
@@ -141,3 +142,10 @@ saveBtn.addEventListener("click", function () {
     });
   });
 });
+
+
+
+
+
+
+
