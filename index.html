@@ -51,68 +51,39 @@
       </div>
       <!-- task 3: card list -->
       <ul id="card-list">
-        <li id="card-template" class="hidden">
+        <!-- card template -->
+        <li id="template-card" class="new-card hidden">
           <!-- front side -->
-          <div class="card" id="card-front-read-only">
-            <div class="front" id="front-read-only">
-              <div class="textFrame" id="textFrame">
+          <div class="new-card-front">
+            <div class="front">
+              <div class="textFrame">
                 <p class="textstyle front-output">la bottiglia</p>
-                <img src="Icon.svg" alt="editIcon">
+                <img id="editFront" src="editIcon.svg" alt="editIcon">
               </div>
             </div>
           </div>
           <!-- back-side -->
-          <div class="card" id="card-back-read-only">
-            <div class="back" id="back-read-only">
-              <div class="textFrame" id="textFrame">
+          <div class="new-card-back">
+            <div class="back">
+              <div class="textFrame">
                 <p class="textstyle back-output">butelka</p>
-                <img src="Icon.svg" alt="editIcon">
+                <img id="editBack" src="editIcon.svg" alt="editIcon">
               </div>
             </div>
           </div>
         </li>
       </ul>
-      <!-- task 4: card component -->
-      <!-- front side -->
-      <!-- <div class="card" id="card-front-read-only">
-      <div class="front" id="front-read-only">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">la bottiglia</p>
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div> -->
-      <!-- <div class="card" id="card-front-editable">
-      <div class="front" id="front-editable">
-      <input type="text" class="textstyleedit" placeholder="la bottiglia">
-      <img src="Icon(1).svg" alt="editbutton">
+
+      <!-- edit card template -->
+      <li class="hidden new-card" id="edit-template">
+      <input type="text" class="textstyleedit" placeholder="Empty card">
+      <img src="removeIcon.svg" alt="removebutton">
       <div class="buttons">
       <button class="cancel-btn btn">Cancel</button>
       <button class="save-btn btn">Save</button>
       </div>
-      </div>
-    </div> -->
-      <!-- back-side -->
-      <!-- <div class="card" id="card-back-read-only">
-      <div class="back" id="back-read-only">
-      <div class="textFrame" id="textFrame">
-      <p class="textstyle">la bottiglia</p>  
-      <img src="Icon.svg" alt="editIcon">
-      </div>
-      </div>
-    </div> -->
-      <!-- <div class="card" id="card-back-editable">
-      <div class="back" id="back-editable">
-      <input type="text" class="textstyleedit" placeholder="la bottiglia">
-      <img src="Icon(1).svg" alt="editbutton">
-      <div class="buttons">
-      <button class="cancel-btn btn">Cancel</button>
-      <button class="save-btn btn">Save</button>
-      </div>
-      </div>
-    </div> -->
-      <!-- the end of task 4: card component -->
-      <!-- </div> -->
+    </li>
+
     </div>
   </div>
   <script type="module" src="./js/app.js"></script>
