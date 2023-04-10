@@ -27,6 +27,49 @@ const cardFlip = () => {
   });
 };
 
+// display initial cards
+document.addEventListener("DOMContentLoaded", () => {
+  let appState = {
+    flashcards: [
+      { front: "Koń", back: "Horse" },
+      { front: "Królik", back: "Rabbit" },
+      { front: "Pies", back: "Dog" },
+    ],
+  };
+
+  const app = document.getElementById("app");
+  const cardTemplate = document.querySelector("#template-card");
+  // cardTemplate.classList.remove("hidden");
+  const cardList = document.querySelector("#card-list");
+
+  appState.flashcards.forEach((flashcard, index) => {
+    const cardToAdd = cardTemplate.cloneNode(true);
+    cardToAdd.classList.remove("hidden");
+    cardToAdd.id = "card_" + index;
+    const cardFront = cardToAdd.querySelector(".front-output");
+    cardFront.innerText = flashcard.front;
+    const cardBack = cardToAdd.querySelector(".back-output");
+    cardBack.innerText = flashcard.back;
+    cardList.append(cardToAdd);
+
+    cardToAdd.addEventListener("click", (event) => {
+      if (event.target.classList.contains("textFrame")) {
+        anime({
+          targets: cardToAdd,
+          rotateY: { value: "+=180", delay: 200 },
+          easing: "easeInOutSine",
+          duration: 400,
+          complete: function (anim) {
+            playing = false;
+          },
+        });
+      }
+    });
+    console.log(`card flipped`);
+  });
+  console.log(`you have ${appState.flashcards.length} card/s.`);
+});
+
 
 //event listeners
 
