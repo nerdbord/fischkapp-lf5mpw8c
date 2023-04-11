@@ -27,6 +27,50 @@ const cardFlip = () => {
   });
 };
 
+// display initial cards
+document.addEventListener("DOMContentLoaded", () => {
+  let appState = {
+    flashcards: [
+      { front: "Koń", back: "Horse" },
+      { front: "Królik", back: "Rabbit" },
+      { front: "Pies", back: "Dog" },
+    ],
+  };
+
+  const app = document.getElementById("app");
+  const cardTemplate = document.querySelector("#template-card");
+  // cardTemplate.classList.remove("hidden");
+  const cardList = document.querySelector("#card-list");
+
+  appState.flashcards.forEach((flashcard, index) => {
+    const cardToAdd = cardTemplate.cloneNode(true);
+    cardToAdd.classList.remove("hidden");
+    cardToAdd.id = "card_" + index;
+    const cardFront = cardToAdd.querySelector(".front-output");
+    cardFront.innerText = flashcard.front;
+    const cardBack = cardToAdd.querySelector(".back-output");
+    cardBack.innerText = flashcard.back;
+    cardList.append(cardToAdd);
+
+    cardToAdd.addEventListener("click", (event) => {
+      if (event.target.classList.contains("textFrame")) {
+        anime({
+          targets: cardToAdd,
+          rotateY: { value: "+=180", delay: 200 },
+          easing: "easeInOutSine",
+          duration: 400,
+          complete: function (anim) {
+            playing = false;
+          },
+        });
+      }
+    });
+    console.log(`card flipped`);
+  });
+  console.log(`you have ${appState.flashcards.length} card/s.`);
+});
+
+
 //event listeners
 
 addNewBtn.addEventListener("click", () => {
@@ -71,7 +115,6 @@ saveBtn.addEventListener("click", function () {
   cardFrontText.textContent = inputValue1;
   const cardBackText = newCard.querySelector(".back-output");
   cardBackText.textContent = inputValue2;
-  cardBackText.classList.add("hidden");
 
   const cardList = document.querySelector("#card-list");
   cardList.appendChild(newCard);
@@ -98,7 +141,7 @@ saveBtn.addEventListener("click", function () {
       newFront.classList.add("front");
       newFront.id = newFrontId;
       newFront.querySelector("input").value =
-        card.querySelector(".front-output").textContent;
+          card.querySelector(".front-output").textContent;
       const previousViewFront = card;
       card.replaceWith(newFront);
       newFront.querySelector("input").focus();
@@ -130,7 +173,7 @@ saveBtn.addEventListener("click", function () {
       newBack.classList.add("back");
       newBack.id = newBackId;
       newBack.querySelector("input").value =
-        card.querySelector(".back-output").textContent;
+          card.querySelector(".back-output").textContent;
       const previousViewBack = card;
       card.replaceWith(newBack);
       newBack.querySelector("input").focus();
@@ -153,6 +196,19 @@ saveBtn.addEventListener("click", function () {
         newBack.replaceWith(previousViewBack);
         cardBackText.textContent = newInput;
       });
+    });
+    card.addEventListener("click", (event) => {
+      if (event.target.classList.contains("textFrame")) {
+        anime({
+          targets: card,
+          rotateY: { value: "+=180", delay: 200 },
+          easing: "easeInOutSine",
+          duration: 400,
+          complete: function (anim) {
+            playing = false;
+          },
+        });
+      }
     });
   });
 });
