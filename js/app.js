@@ -52,25 +52,90 @@ document.addEventListener("DOMContentLoaded", () => {
     cardBack.innerText = flashcard.back;
     cardList.append(cardToAdd);
 
-    cardToAdd.addEventListener("click", (event) => {
-      if (event.target.classList.contains("textFrame")) {
-        anime({
-          targets: cardToAdd,
-          rotateY: { value: "+=180", delay: 200 },
-          easing: "easeInOutSine",
-          duration: 400,
-          complete: function (anim) {
-            playing = false;
-          },
-        });
-      }
+    const buttonFront = cardToAdd.querySelector("#editFront");
+    const editTemplate = document.getElementById("edit-template");
+    buttonFront.addEventListener("click", () => {
+      const newFront = editTemplate.cloneNode(true);
+      const newFrontId = `editFront-${cardId}`;
+      newFront.classList.remove("hidden");
+      newFront.classList.add("front");
+      newFront.id = newFrontId;
+      newFront.querySelector("input").value =
+          cardFront.textContent;
+      const previousViewFront = cardBack;
+      cardBack.replaceWith(newFront);
+      newFront.querySelector("input").focus();
+
+      const cancelBtn = newFront.querySelector(".cancel-btn");
+      cancelBtn.addEventListener("click", () => {
+        newFront.replaceWith(previousViewFront);
+      });
+      //removing flashcard
+      const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
+      removeIcon.addEventListener("click", () => {
+        newFront.remove();
+        cardCounter--;
+        counter.innerText = cardCounter;
+      });
+      //saving new inputs
+      const saveBtn = newFront.querySelector(".save-btn");
+      saveBtn.addEventListener("click", () => {
+        const newInput = document.querySelector(".textstyleedit").value;
+        newFront.replaceWith(previousViewFront);
+        cardFrontText.textContent = newInput;
+      });
     });
-    console.log(`card flipped`);
+    const buttonBack = cardToAdd.querySelector("#editBack");
+    buttonBack.addEventListener("click", () => {
+      const newBack = editTemplate.cloneNode(true);
+      const newBackId = `editBack-${cardId}`;
+      newBack.classList.remove("hidden");
+      newBack.classList.add("back");
+      newBack.id = newBackId;
+      newBack.querySelector("input").value =
+          cardBack.textContent;
+      const previousViewBack = cardBack;
+      cardBack.replaceWith(newBack);
+      newBack.querySelector("input").focus();
+
+      const cancelBtn = newBack.querySelector(".cancel-btn");
+      cancelBtn.addEventListener("click", () => {
+        newBack.replaceWith(previousViewBack);
+      });
+      //removing flashcard
+      const removeIcon = newBack.querySelector('img[src="removeIcon.svg"]');
+      removeIcon.addEventListener("click", () => {
+        newBack.remove();
+        cardCounter--;
+        counter.innerText = cardCounter;
+      });
+      //saving edited
+      const saveBtn = newBack.querySelector(".save-btn");
+      saveBtn.addEventListener("click", () => {
+        const newInput = document.querySelector(".textstyleedit").value;
+        newBack.replaceWith(previousViewBack);
+        cardBackText.textContent = newInput;
+      });
+
+      cardToAdd.addEventListener("click", (event) => {
+        if (event.target.classList.contains("textFrame")) {
+          anime({
+            targets: cardToAdd,
+            rotateY: {value: "+=180", delay: 200},
+            easing: "easeInOutSine",
+            duration: 400,
+            complete: function (anim) {
+              playing = false;
+            },
+          });
+        }
+      });
+      console.log(`card flipped`);
+    });
+    console.log(`you have ${appState.flashcards.length} card/s.`);
   });
-  console.log(`you have ${appState.flashcards.length} card/s.`);
-});
 
-
+  ////////////////////////////////////////////////////////////////////////////////
 //event listeners
 
 addNewBtn.addEventListener("click", () => {
