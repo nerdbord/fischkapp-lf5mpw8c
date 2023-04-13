@@ -37,15 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
   };
 
-  const app = document.getElementById("app");
   const cardTemplate = document.querySelector("#template-card");
-  // cardTemplate.classList.remove("hidden");
+  cardTemplate.classList.remove("hidden");
   const cardList = document.querySelector("#card-list");
 
   appState.flashcards.forEach((flashcard, index) => {
     const cardToAdd = cardTemplate.cloneNode(true);
     cardToAdd.classList.remove("hidden");
     cardToAdd.id = "card_" + index;
+    cardToAdd.id = cardToAddId;
     const cardFront = cardToAdd.querySelector(".front-output");
     cardFront.innerText = flashcard.front;
     const cardBack = cardToAdd.querySelector(".back-output");
@@ -55,15 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonFront = cardToAdd.querySelector("#editFront");
     const editTemplate = document.getElementById("edit-template");
     buttonFront.addEventListener("click", () => {
+      const cardFrontText = newCard.querySelector(".front-output");
       const newFront = editTemplate.cloneNode(true);
-      const newFrontId = `editFront-${cardId}`;
+      const newFrontId = `editFront-${cardToAddId}`;
       newFront.classList.remove("hidden");
       newFront.classList.add("front");
       newFront.id = newFrontId;
       newFront.querySelector("input").value =
           cardFront.textContent;
-      const previousViewFront = cardBack;
-      cardBack.replaceWith(newFront);
+      const previousViewFront = cardFront;
+      cardFront.replaceWith(newFront);
       newFront.querySelector("input").focus();
 
       const cancelBtn = newFront.querySelector(".cancel-btn");
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonBack = cardToAdd.querySelector("#editBack");
     buttonBack.addEventListener("click", () => {
       const newBack = editTemplate.cloneNode(true);
-      const newBackId = `editBack-${cardId}`;
+      const newBackId = `editBack-${cardToAddId}`;
       newBack.classList.remove("hidden");
       newBack.classList.add("back");
       newBack.id = newBackId;
@@ -135,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`you have ${appState.flashcards.length} card/s.`);
   });
 
-  ////////////////////////////////////////////////////////////////////////////////
 //event listeners
 
 addNewBtn.addEventListener("click", () => {
