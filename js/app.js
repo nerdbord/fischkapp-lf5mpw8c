@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log(`you have ${appState.flashcards.length} card/s.`);
 });
 
-
 //event listeners
 
 addNewBtn.addEventListener("click", () => {
