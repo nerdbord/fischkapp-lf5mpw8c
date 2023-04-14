@@ -37,107 +37,110 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
   };
 
+  const app = document.getElementById("app");
   const cardTemplate = document.querySelector("#template-card");
-  cardTemplate.classList.remove("hidden");
+  // cardTemplate.classList.remove("hidden");
   const cardList = document.querySelector("#card-list");
 
   appState.flashcards.forEach((flashcard, index) => {
     const cardToAdd = cardTemplate.cloneNode(true);
     cardToAdd.classList.remove("hidden");
     cardToAdd.id = "card_" + index;
-    cardToAdd.id = cardToAddId;
     const cardFront = cardToAdd.querySelector(".front-output");
     cardFront.innerText = flashcard.front;
     const cardBack = cardToAdd.querySelector(".back-output");
     cardBack.innerText = flashcard.back;
     cardList.append(cardToAdd);
 
-    const buttonFront = cardToAdd.querySelector("#editFront");
-    const editTemplate = document.getElementById("edit-template");
-    buttonFront.addEventListener("click", () => {
-      const cardFrontText = newCard.querySelector(".front-output");
-      const newFront = editTemplate.cloneNode(true);
-      const newFrontId = `editFront-${cardToAddId}`;
-      newFront.classList.remove("hidden");
-      newFront.classList.add("front");
-      newFront.id = newFrontId;
-      newFront.querySelector("input").value =
-          cardFront.textContent;
-      const previousViewFront = cardFront;
-      cardFront.replaceWith(newFront);
-      newFront.querySelector("input").focus();
+    //Edit view
+      const buttonFront = cardToAdd.querySelector("#editFront");
+      const editTemplate = document.getElementById("edit-template");
 
-      const cancelBtn = newFront.querySelector(".cancel-btn");
-      cancelBtn.addEventListener("click", () => {
-        newFront.replaceWith(previousViewFront);
+      buttonFront.addEventListener("click", () => {
+        const newFront = editTemplate.cloneNode(true);
+        newFront.id = "card_" + index;
+        newFront.classList.remove("hidden");
+        newFront.classList.add("front");
+        newFront.id = newFrontId;
+        newFront.querySelector("input").value =
+            cardToAdd.querySelector(".front-output").textContent;
+        const previousViewFront = cardToAdd;
+        cardToAdd.replaceWith(newFront);
+        newFront.querySelector("input").focus();
+
+        const cancelBtn = newFront.querySelector(".cancel-btn");
+        cancelBtn.addEventListener("click", () => {
+          newFront.replaceWith(previousViewFront);
+        });
+        //removing flashcard
+        const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
+        removeIcon.addEventListener("click", () => {
+          newFront.remove();
+          cardCounter--;
+          counter.innerText = cardCounter;
+        });
+        //saving new inputs
+        const saveBtn = newFront.querySelector(".save-btn");
+        saveBtn.addEventListener("click", () => {
+          const newInput = document.querySelector(".textstyleedit").value;
+          newFront.replaceWith(previousViewFront);
+          cardFrontText.textContent = newInput;
+        });
       });
-      //removing flashcard
-      const removeIcon = newFront.querySelector('img[src="removeIcon.svg"]');
-      removeIcon.addEventListener("click", () => {
-        newFront.remove();
-        cardCounter--;
-        counter.innerText = cardCounter;
+      const buttonBack = cardToAdd.querySelector("#editBack");
+      buttonBack.addEventListener("click", () => {
+        const newBack = editTemplate.cloneNode(true);
+        newBack.id = "card_" + index;
+        newBack.classList.remove("hidden");
+        newBack.classList.add("back");
+        newBack.id = newBackId;
+        newBack.querySelector("input").value =
+            cardToAdd.querySelector(".back-output").textContent;
+        const previousViewBack = cardToAdd;
+        cardToAdd.replaceWith(newBack);
+        newBack.querySelector("input").focus();
+
+        const cancelBtn = newBack.querySelector(".cancel-btn");
+        cancelBtn.addEventListener("click", () => {
+          newBack.replaceWith(previousViewBack);
+        });
+        //removing flashcard
+        const removeIcon = newBack.querySelector('img[src="removeIcon.svg"]');
+        removeIcon.addEventListener("click", () => {
+          newBack.remove();
+          cardCounter--;
+          counter.innerText = cardCounter;
+        });
+        //saving edited
+        const saveBtn = newBack.querySelector(".save-btn");
+        saveBtn.addEventListener("click", () => {
+          const newInput = document.querySelector(".textstyleedit").value;
+          newBack.replaceWith(previousViewBack);
+          cardBackText.textContent = newInput;
+        });
       });
-      //saving new inputs
-      const saveBtn = newFront.querySelector(".save-btn");
-      saveBtn.addEventListener("click", () => {
-        const newInput = document.querySelector(".textstyleedit").value;
-        newFront.replaceWith(previousViewFront);
-        cardFrontText.textContent = newInput;
-      });
+
+
+    cardToAdd.addEventListener("click", (event) => {
+      if (event.target.classList.contains("textFrame")) {
+        anime({
+          targets: cardToAdd,
+          rotateY: { value: "+=180", delay: 200 },
+          easing: "easeInOutSine",
+          duration: 400,
+          complete: function (anim) {
+            playing = false;
+          },
+        });
+      }
     });
-    const buttonBack = cardToAdd.querySelector("#editBack");
-    buttonBack.addEventListener("click", () => {
-      const newBack = editTemplate.cloneNode(true);
-      const newBackId = `editBack-${cardToAddId}`;
-      newBack.classList.remove("hidden");
-      newBack.classList.add("back");
-      newBack.id = newBackId;
-      newBack.querySelector("input").value =
-          cardBack.textContent;
-      const previousViewBack = cardBack;
-      cardBack.replaceWith(newBack);
-      newBack.querySelector("input").focus();
-
-      const cancelBtn = newBack.querySelector(".cancel-btn");
-      cancelBtn.addEventListener("click", () => {
-        newBack.replaceWith(previousViewBack);
-      });
-      //removing flashcard
-      const removeIcon = newBack.querySelector('img[src="removeIcon.svg"]');
-      removeIcon.addEventListener("click", () => {
-        newBack.remove();
-        cardCounter--;
-        counter.innerText = cardCounter;
-      });
-      //saving edited
-      const saveBtn = newBack.querySelector(".save-btn");
-      saveBtn.addEventListener("click", () => {
-        const newInput = document.querySelector(".textstyleedit").value;
-        newBack.replaceWith(previousViewBack);
-        cardBackText.textContent = newInput;
-      });
-
-      cardToAdd.addEventListener("click", (event) => {
-        if (event.target.classList.contains("textFrame")) {
-          anime({
-            targets: cardToAdd,
-            rotateY: {value: "+=180", delay: 200},
-            easing: "easeInOutSine",
-            duration: 400,
-            complete: function (anim) {
-              playing = false;
-            },
-          });
-        }
-      });
-      console.log(`card flipped`);
-    });
-    console.log(`you have ${appState.flashcards.length} card/s.`);
+    console.log(`card flipped`);
   });
+  console.log(`you have ${appState.flashcards.length} card/s.`);
+});
+
 
 //event listeners
-
 addNewBtn.addEventListener("click", () => {
   newCardContainer.classList.remove("hidden");
 });
