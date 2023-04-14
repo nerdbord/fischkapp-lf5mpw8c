@@ -17,3 +17,6 @@ This project aims to create a simple app that supports learning.
 ### 🔧 Technical requirements
 
 HTML, CSS, Javascript
+
+### URL deployment
+https://nerdbord.github.io/fischkapp-lf5mpw8c/
