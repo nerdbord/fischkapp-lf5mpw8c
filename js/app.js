@@ -27,7 +27,6 @@ const cardFlip = () => {
   });
 };
 
-edit-default-flipcard
 
 // display initial cards
 document.addEventListener("DOMContentLoaded", () => {
